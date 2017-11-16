@@ -20,15 +20,16 @@
     <div id="patches"></div><br/>
     <p> This 3D thematic map shows the number of noise complaints in New York City according to all the 3-1-1 Service requests from January to March, 2017. The data was directly downloaded from <a href="https://data.cityofnewyork.us/Social-Services/Noise-complaints-since-20151101-w-Unspecified-CB/vjav-8yz5">NYC OpenData</a>. In the United States, 3-1-1 is a special telephone number that provides access to non-emergency municipal services.</p><br/>
     <p> Virtual globe Lib: cesium.js | BaseMap: Mapbox | Noise Reports: NYC OpenData </p>
-    <p> Author: <a href="http://ceoas.oregonstate.edu/profile/zhao/">Bo Zhao </a>|  Oregon State University</p>
+    <p> Modified by: <a href="https://github.com/zochg">Grant Zoch </a>|  Oregon State University</p>
+    <p> Based on the example provided by: <a href="https://github.com/jakobzhao">Bo Zhao</a></p>
 </div>
 <script>
 
     //create a cesium view, and use the mapbox dark map as the base map.
     var viewer = new Cesium.Viewer('cesiumContainer', {
             imageryProvider : new Cesium.MapboxImageryProvider({
-                    mapId : 'mapbox.dark',
-                    accessToken : 'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpenh0dG41ZjAyY3gzMXFsdTJqbm5oNmwifQ.ucAGT19EfvxX2EUaHUwAxA'
+                    mapId : 'mapbox.streets',
+                    accessToken : 'pk.eyJ1Ijoiem9rY2hveSIsImEiOiJjajh3NmFoZG8xbTBrMnFwMGxzMWZwbWdvIn0.xaSQIBAcgAX2n5TE6MxqFA'
         }),
         terrainProvider: new Cesium.CesiumTerrainProvider({
             url: '//assets.agi.com/stk-terrain/world'
@@ -52,8 +53,8 @@
 
     // determine the color.md ramp. The number of colors is determined by the number of classes.
     // try different interpolation method lch, lab, hsl
-    //var colors = chroma.scale(['yellow', 'navy']).mode('hsl').colors(grades.length);
-    var colors = chroma.scale('YlOrRd').colors(grades.length);
+    var colors = chroma.scale(['green', 'yellow', 'red']).mode('hsl').colors(grades.length);
+    //var colors = chroma.scale('YlOrRd').colors(grades.length);
 
     // create the legend
     var labels = [];
